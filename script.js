@@ -26,36 +26,55 @@ function getHumanChoice() {
 function playRound(humanChoice, computerChoice) {
     if (humanChoice === 'rock' && computerChoice === 'paper') {
         console.log('You lose! Paper beats Rock');
-        computerChoice++;
+        computerScore++;
     }
     else if (humanChoice === 'paper' && computerChoice === 'scissors') {
         console.log('You lose! Scissors beats Paper');
-        computerChoice++;
+        computerScore++;
     }
     else if (humanChoice === 'scissors' && computerChoice === 'rock') {
         console.log('You lose! Rock beats Scissors');
-        computerChoice++;
+        computerScore++;
     }
     else if (humanChoice === 'rock' && computerChoice === 'scissors') {
         console.log('You win! Rock beats Scissors');
-        humanChoice++;
+        humanScore++;
     }
     else if (humanChoice === 'paper' && computerChoice === 'rock') {
         console.log('You win! Paper beats Rock');
-        humanChoice++;
+        humanScore++;
     }
     else if (humanChoice === 'scissors' && computerChoice === 'paper') {
         console.log('You win! Scissors beats Paper');
-        humanChoice++;
+        humanScore++;
+    }
+    else if (humanChoice == computerChoice) {
+        console.log('It\'s a tie!');
     }
 }
 
-let computerChoice = getComputerChoice()
-
-let humanChoice = getHumanChoice()
-
-console.log(computerChoice)
-console.log(humanChoice)
+function playGame() {
+    for (let i = 0; i < 5; i++) {
+        let computerChoice = getComputerChoice();
+        let humanChoice = getHumanChoice();
+        console.log(computerChoice)
+        console.log(humanChoice)
+        playRound(humanChoice, computerChoice);
+        console.log(computerScore, 'Computer Score')
+        console.log(humanScore, 'Human Score')
+    }
+    if (humanScore > computerScore) {
+        console.log('Game Over... You win!')
+    }
+    else if (humanScore === computerScore) {
+        console.log('Game Over... It\'s a tie')
+    }
+    else {
+        console.log('Game Over... You lose!')
+    }
+}
 
 let computerScore = 0
 let humanScore = 0
+
+playGame();
