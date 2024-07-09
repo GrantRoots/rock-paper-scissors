@@ -74,6 +74,8 @@ function playGame() {
     }
 }
 
+let container = document.querySelector('#container')
+
 let computerScore = 0
 let humanScore = 0
 
